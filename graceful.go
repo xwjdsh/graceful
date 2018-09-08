@@ -1,7 +1,6 @@
 package graceful
 
 import (
-	"io"
 	"log"
 	"os"
 	"os/signal"
@@ -34,12 +33,6 @@ func New() *Manager {
 		signalThreshold: 1,
 		stop:            make(chan os.Signal),
 	}
-}
-
-func SetLogOutput(output io.Writer) *Manager { return defaultManager.SetLogOutput(output) }
-func (m *Manager) SetLogOutput(output io.Writer) *Manager {
-	log.SetOutput(output)
-	return m
 }
 
 func SetSignalThreshold(st int) *Manager { return defaultManager.SetSignalThreshold(st) }
